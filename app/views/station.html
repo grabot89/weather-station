@@ -1,0 +1,85 @@
+#{extends 'main.html' /}
+#{set title:'Station' /}
+
+#{menu id:"dashboard"/}
+
+<div class="content box">
+    <h1 class="title">
+        ${station.name}
+    </h1>
+    <div class="columns">
+        <div class="column is-one-fifth">
+            <div class="card has-background-black">
+                <div class="card-content has-text-white	">
+                    <div class="content">
+                        Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras mattis consectetur purus sit amet fermentum.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column is-one-fifth">
+            <div class="card has-background-black">
+                <div class="card-content has-text-white	">
+                    <div class="content">
+                        Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras mattis consectetur purus sit amet fermentum.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column is-one-fifth">
+            <div class="card has-background-black">
+                <div class="card-content has-text-white	">
+                    <div class="content">
+                        Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras mattis consectetur purus sit amet fermentum.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column is-one-fifth">
+            <div class="card has-background-black">
+                <div class="card-content has-text-white	">
+                    <div class="content">
+                        Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras mattis consectetur purus sit amet fermentum.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column is-one-fifth">
+            <div class="card has-background-black">
+                <div class="card-content has-text-white	">
+                    <div class="content">
+                        Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras mattis consectetur purus sit amet fermentum.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Code</th>
+            <th>Temperature</th>
+            <th>Wind Speed</th>
+            <th>Pressure</th>
+        </tr>
+        </thead>
+        <tbody>
+        #{list items:station.readings, as:'reading'}
+        <tr>
+            <td>
+                ${reading.code}
+            </td>
+            <td>
+                ${reading.temperature}
+            </td>
+            <td>
+                ${reading.windSpeed}
+            </td>
+            <td>
+                ${reading.pressure}
+            </td>
+        </tr>
+        #{/list}
+        </tbody>
+    </table>
+</div>
