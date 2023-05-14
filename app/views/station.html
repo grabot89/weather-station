@@ -10,18 +10,21 @@
     <div class="columns">
         <div class="column is-one-fifth">
             <div class="card has-background-black">
-                <div class="card-content has-text-white	">
-                    <div class="content">
-                        ${station.name}
+                <div class="card-content has-text-white">
+                    <div class="content mt-3">
+                        <h3 class="has-text-white">${station.name}</h3>
                     </div>
+                    <br>
+                    <br>
+                    <br>
                 </div>
             </div>
         </div>
         <div class="column is-one-fifth">
             <div class="card has-background-black">
                 <div class="card-content has-text-white	">
-                    <div class="content">
-                        Weather
+                    <div class="content mt-3">
+                        <h3 class="has-text-white">Weather</h3>
                         <br>
                         ${station.getLatestReading().getStatus()}
                     </div>
@@ -31,13 +34,12 @@
         <div class="column is-one-fifth">
             <div class="card has-background-black">
                 <div class="card-content has-text-white	">
-                    <div class="content">
-                        Temp
+                    <div class="content mt-3">
+                        <h3 class="has-text-white">Temp</h3>
                         <br>
                         ${station.getLatestReading().getTemperature()} °C
                         <br>
                         ${station.getLatestReading().getTemperatureFahrenheit()} °F
-
                     </div>
                 </div>
             </div>
@@ -45,8 +47,8 @@
         <div class="column is-one-fifth">
             <div class="card has-background-black">
                 <div class="card-content has-text-white	">
-                    <div class="content">
-                        Wind
+                    <div class="content mt-3">
+                        <h3 class="has-text-white">Wind</h3>
                         <br>
                         ${station.getLatestReading().getWindBeaufort()} bft
                     </div>
@@ -56,8 +58,8 @@
         <div class="column is-one-fifth">
             <div class="card has-background-black">
                 <div class="card-content has-text-white	">
-                    <div class="content">
-                        Pressure
+                    <div class="content mt-3">
+                        <h3 class="has-text-white">Pressure</h3>
                         <br>
                         ${station.getLatestReading().getPressure()} hpa
                     </div>
