@@ -18,5 +18,9 @@ public class Station extends Model
     {
         this.name = name;
     }
+
+    public Reading getLatestReading() {
+        return readings.get(readings.size()-1);
+    }
 }
 

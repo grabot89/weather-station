@@ -12,7 +12,7 @@
             <div class="card has-background-black">
                 <div class="card-content has-text-white	">
                     <div class="content">
-                        Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras mattis consectetur purus sit amet fermentum.
+                        ${station.name}
                     </div>
                 </div>
             </div>
@@ -21,7 +21,9 @@
             <div class="card has-background-black">
                 <div class="card-content has-text-white	">
                     <div class="content">
-                        Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras mattis consectetur purus sit amet fermentum.
+                        Weather
+                        <br>
+                        ${station.getLatestReading().getStatus()}
                     </div>
                 </div>
             </div>
@@ -30,7 +32,12 @@
             <div class="card has-background-black">
                 <div class="card-content has-text-white	">
                     <div class="content">
-                        Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras mattis consectetur purus sit amet fermentum.
+                        Temp
+                        <br>
+                        ${station.getLatestReading().getTemperature()} °C
+                        <br>
+                        ${station.getLatestReading().getTemperatureFahrenheit()} °F
+
                     </div>
                 </div>
             </div>
@@ -39,7 +46,9 @@
             <div class="card has-background-black">
                 <div class="card-content has-text-white	">
                     <div class="content">
-                        Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras mattis consectetur purus sit amet fermentum.
+                        Wind
+                        <br>
+                        ${station.getLatestReading().getWindBeaufort()} bft
                     </div>
                 </div>
             </div>
@@ -48,7 +57,9 @@
             <div class="card has-background-black">
                 <div class="card-content has-text-white	">
                     <div class="content">
-                        Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras mattis consectetur purus sit amet fermentum.
+                        Pressure
+                        <br>
+                        ${station.getLatestReading().getPressure()} hpa
                     </div>
                 </div>
             </div>
