@@ -1,4 +1,4 @@
-# play-template-1
+# weather-station
 
 This is a sample starter project for this course:
 
