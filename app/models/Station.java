@@ -11,6 +11,8 @@ import java.util.List;
 public class Station extends Model
 {
     public String name;
+    public double latitude;
+    public double longitude;
     @OneToMany(cascade= CascadeType.ALL)
     public List<Reading> readings = new ArrayList<Reading>();
 
@@ -26,5 +28,7 @@ public class Station extends Model
             return readings.get(readings.size()-1);
         return new Reading(100, 10.0F, 100.00F, 200, 900);
     }
+
+
 }
 
