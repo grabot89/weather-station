@@ -1,5 +1,6 @@
 package util;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
 
 public class StationUtil {
@@ -37,6 +38,49 @@ public class StationUtil {
     else if (windSpeed <= 102)
       return 10;
     else return 11;
+  }
+
+  public static String windDirectionToCompass(float windDirection) {
+    if (windDirection >= 348.75 && windDirection < 11.25)
+      return "North";
+    if (windDirection >= 11.25 && windDirection < 33.75)
+      return "North North East";
+    if (windDirection >= 33.75 && windDirection < 56.25)
+      return "North East";
+    if (windDirection >= 56.25 && windDirection < 78.75)
+      return "East North East";
+    if (windDirection >= 78.75 && windDirection < 101.25)
+      return "East";
+    if (windDirection >= 101.25 && windDirection < 123.75)
+      return "East South East";
+    if (windDirection >= 123.75 && windDirection < 146.25)
+      return "South East";
+    if (windDirection >= 146.25 && windDirection < 168.75)
+      return "South South East";
+    if (windDirection >= 168.75 && windDirection < 191.25)
+      return "South";
+    if (windDirection >= 191.25 && windDirection < 213.75)
+      return "South South West";
+    if (windDirection >= 213.75 && windDirection < 236.25)
+      return "South West";
+    if (windDirection >= 236.25 && windDirection < 258.75)
+      return "West South West";
+    if (windDirection >= 258.75 && windDirection < 281.25)
+      return "West";
+    if (windDirection >= 281.25 && windDirection < 303.75)
+      return "West North West";
+    if (windDirection >= 303.75 && windDirection < 326.25)
+      return "North West";
+    if (windDirection >= 326.25 && windDirection < 348.75)
+      return "North North West";
+
+    // Return north to stop error, should never be hit
+    return "North";
+  }
+
+  public static String windChillCalculator(float tempCelsius, float windSpeed) {
+    DecimalFormat decimalFormat = new DecimalFormat(".#");
+    return decimalFormat.format(13.12 + 0.6215*tempCelsius - 11.37*Math.pow(windSpeed, 0.16) + 0.3965*tempCelsius*Math.pow(windSpeed, 0.16));
   }
 
   public static void loadMap() {

@@ -51,6 +51,12 @@
                         <h3 class="has-text-white">Wind</h3>
                         <br>
                         ${station.getLatestReading().getWindBeaufort()} bft
+                        <br>
+                        ${station.getLatestReading().getWindCompassDirection()}
+                        <br>
+                        Feels like
+                        <br>
+                        ${station.getLatestReading().getWindChill()}
                     </div>
                 </div>
             </div>
@@ -73,6 +79,7 @@
             <th>Code</th>
             <th>Temperature</th>
             <th>Wind Speed</th>
+            <th>Wind Direction</th>
             <th>Pressure</th>
         </tr>
         </thead>
@@ -89,6 +96,9 @@
                 ${reading.windSpeed}
             </td>
             <td>
+                ${reading.windDirection}
+            </td>
+            <td>
                 ${reading.pressure}
             </td>
         </tr>
@@ -96,3 +106,4 @@
         </tbody>
     </table>
 </div>
+#{addreading station:station /}

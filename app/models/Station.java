@@ -20,7 +20,11 @@ public class Station extends Model
     }
 
     public Reading getLatestReading() {
-        return readings.get(readings.size()-1);
+        // Fails if station newly created and has no readings
+        // give it a dummy reading for now
+        if (!readings.isEmpty())
+            return readings.get(readings.size()-1);
+        return new Reading(100, 10.0F, 100.00F, 200, 900);
     }
 }
 
