@@ -1,7 +1,10 @@
 package util;
 
+import models.Reading;
+
 import java.text.DecimalFormat;
 import java.util.HashMap;
+import java.util.List;
 
 public class StationUtil {
 
@@ -81,6 +84,69 @@ public class StationUtil {
   public static String windChillCalculator(float tempCelsius, float windSpeed) {
     DecimalFormat decimalFormat = new DecimalFormat(".#");
     return decimalFormat.format(13.12 + 0.6215*tempCelsius - 11.37*Math.pow(windSpeed, 0.16) + 0.3965*tempCelsius*Math.pow(windSpeed, 0.16));
+  }
+
+  public static String getTempTrend(List<Reading> readings) {
+    if (readings.size() < 3) {
+      return "Steady";
+    }
+
+    Reading latest = readings.get(readings.size()-1);
+    Reading secondLatest = readings.get(readings.size()-2);
+    Reading thirdLatest = readings.get(readings.size()-3);
+
+    if (latest.getTemperature() > secondLatest.getTemperature()
+        && secondLatest.getTemperature() > thirdLatest.getTemperature()) {
+      return "Rising";
+    }
+
+    if (latest.getTemperature() < secondLatest.getTemperature()
+        && secondLatest.getTemperature() < thirdLatest.getTemperature()) {
+      return "Falling";
+    }
+    return "Steady";
+  }
+
+  public static String getWindTrend(List<Reading> readings) {
+    if (readings.size() < 3) {
+      return "Steady";
+    }
+
+    Reading latest = readings.get(readings.size()-1);
+    Reading secondLatest = readings.get(readings.size()-2);
+    Reading thirdLatest = readings.get(readings.size()-3);
+
+    if (latest.getWindSpeed() > secondLatest.getWindSpeed()
+        && secondLatest.getWindSpeed() > thirdLatest.getWindSpeed()) {
+      return "Rising";
+    }
+
+    if (latest.getWindSpeed() < secondLatest.getWindSpeed()
+        && secondLatest.getWindSpeed() < thirdLatest.getWindSpeed()) {
+      return "Falling";
+    }
+    return "Steady";
+  }
+
+  public static String getPressureTrend(List<Reading> readings) {
+    if (readings.size() < 3) {
+      return "Steady";
+    }
+
+    Reading latest = readings.get(readings.size()-1);
+    Reading secondLatest = readings.get(readings.size()-2);
+    Reading thirdLatest = readings.get(readings.size()-3);
+
+    if (latest.getPressure() > secondLatest.getPressure()
+        && secondLatest.getPressure() > thirdLatest.getPressure()) {
+      return "Rising";
+    }
+
+    if (latest.getPressure() < secondLatest.getPressure()
+        && secondLatest.getPressure() < thirdLatest.getPressure()) {
+      return "Falling";
+    }
+    return "Steady";
   }
 
   public static void loadMap() {

@@ -4,23 +4,33 @@ import play.db.jpa.Model;
 import util.StationUtil;
 
 import javax.persistence.Entity;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 public class Reading extends Model
 {
+    private String date;
     private int code;
     private float temperature;
     private float windSpeed;
     private int windDirection;
     private int pressure;
 
-    public Reading(int code, float temperature, float windSpeed, int windDirection, int pressure)
+    public Reading(LocalDateTime date, int code, float temperature, float windSpeed, int windDirection, int pressure)
     {
         this.code = code;
         this.temperature = temperature;
         this.windSpeed = windSpeed;
         this.windDirection = windDirection;
         this.pressure = pressure;
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
+        if (date != null)
+            this.date = dtf.format(date);
+        else {
+            LocalDateTime now = LocalDateTime.now();
+            this.date = dtf.format(now);
+        }
     }
 
     public int getCode() {
@@ -73,6 +83,14 @@ public class Reading extends Model
 
     public int getWindBeaufort() {
         return StationUtil.windSpeedToBeaufort(this.windSpeed);
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getWindCompassDirection() {

@@ -5,11 +5,12 @@
 
 #{list items:stations, as:'station'}
 <div class="content box">
-  <h1 class="title">
-    ${station.name}
-  </h1>
+  #{latestconditions station:station/}
   <span class="icon">
     <a href="/stations/${station.id}"><i class="fas fa-folder-open"></i></a>
+  </span>
+  <span class="icon">
+    <a href="/dashboard/deletestation/${station.id}"><i class="fas fa-trash"></i></a>
   </span>
 </div>
 #{/list}

@@ -7,126 +7,11 @@
     <h1 class="title">
         ${station.name}
     </h1>
-    <div class="columns">
-        <div class="column is-one-fifth">
-            <div class="card has-background-black">
-                <span class="icon has-text-info is-large is-pulled-right">
-                    <i class="fas fa-2x fa-solid fa-location-dot"></i>
-                </span>
-                <div class="card-content has-text-white">
-                    <div class="content mt-3">
-                        <h3 class="has-text-white">${station.name}</h3>
-                        <br>
-                        Lat: ${station.latitude}
-                        <br>
-                        Lng: ${station.longitude}
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="column is-one-fifth">
-            <div class="card has-background-black">
-                <span class="icon has-text-info is-large is-pulled-right">
-                    #{if station.getLatestReading().getStatus() == 'Clear'}
-                    <i class="fas fa-2x fa-solid fa-sun"></i>
-                    #{/if}
-                    #{if station.getLatestReading().getStatus() == 'Partial Clouds'}
-                    <i class="fas fa-2x fa-solid fa-cloud-sun"></i>
-                    #{/if}
-                    #{if station.getLatestReading().getStatus() == 'Cloudy'}
-                    <i class="fas fa-2x fa-solid fa-clouds"></i>
-                    #{/if}
-                    #{if station.getLatestReading().getStatus() == 'Light Showers'}
-                    <i class="fas fa-2x fa-solid fa-cloud-sun-rain"></i>
-                    #{/if}
-                    #{if station.getLatestReading().getStatus() == 'Heavy Showers'}
-                    <i class="fas fa-2x fa-solid fa-cloud-showers-heavy"></i>
-                    #{/if}
-                    #{if station.getLatestReading().getStatus() == 'Rain'}
-                    <i class="fas fa-2x fa-solid fa-cloud-showers-water"></i>
-                    #{/if}
-                    #{if station.getLatestReading().getStatus() == 'Snow'}
-                    <i class="fas fa-2x fa-solid fa-snowflake"></i>
-                    #{/if}
-                    #{if station.getLatestReading().getStatus() == 'Thunder'}
-                    <i class="fas fa-2x fa-solid fa-bolt"></i>
-                    #{/if}
-                </span>
-                <div class="card-content has-text-white	">
-                    <div class="content mt-3">
-                        <h3 class="has-text-white">Weather</h3>
-                        <br>
-                        ${station.getLatestReading().getStatus()}
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="column is-one-fifth">
-            <div class="card has-background-black">
-                <span class="icon has-text-danger is-large is-pulled-right">
-                    <i class="fas fa-2x fa-solid fa-temperature-half"></i>
-                </span>
-                <div class="card-content has-text-white	">
-                    <div class="content mt-3">
-                        <h3 class="has-text-white">Temp</h3>
-                        <br>
-                        ${station.getLatestReading().getTemperature()} °C
-                        <br>
-                        ${station.getLatestReading().getTemperatureFahrenheit()} °F
-                        <br>
-                        Max: ${station.getTempMax()}
-                        <br>
-                        Min: ${station.getTempMin()}
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="column is-one-fifth">
-            <div class="card has-background-black">
-                <span class="icon has-text-warning is-large is-pulled-right">
-                    <i class="fas fa-2x fa-solid fa-tornado"></i>
-                </span>
-                <div class="card-content has-text-white	">
-                    <div class="content mt-3">
-                        <h3 class="has-text-white">Wind</h3>
-                        <br>
-                        ${station.getLatestReading().getWindBeaufort()} bft
-                        <br>
-                        ${station.getLatestReading().getWindCompassDirection()}
-                        <br>
-                        Feels like
-                        <br>
-                        ${station.getLatestReading().getWindChill()}
-                        <br>
-                        Max: ${station.getWindMax()}
-                        <br>
-                        Min: ${station.getWindMin()}
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="column is-one-fifth">
-            <div class="card has-background-black">
-                <span class="icon has-text-success is-large is-pulled-right">
-                    <i class="fas fa-2x fa-solid fa-hurricane"></i>
-                </span>
-                <div class="card-content has-text-white	">
-                    <div class="content mt-3">
-                        <h3 class="has-text-white">Pressure</h3>
-                        <br>
-                        ${station.getLatestReading().getPressure()} hpa
-                        <br>
-                        Max: ${station.getPressureMax()}
-                        <br>
-                        Min: ${station.getPressureMin()}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    #{latestconditions station:station/}
     <table class="table">
         <thead>
         <tr>
+            <th>Date/Time</th>
             <th>Code</th>
             <th>Temperature</th>
             <th>Wind Speed</th>
@@ -137,6 +22,9 @@
         <tbody>
         #{list items:station.readings, as:'reading'}
         <tr>
+            <td>
+                ${reading.date}
+            </td>
             <td>
                 ${reading.code}
             </td>
@@ -151,6 +39,11 @@
             </td>
             <td>
                 ${reading.pressure}
+            </td>
+            <td>
+                <span class="icon has-text-danger">
+                    <a href="/stations/${station.id}/deletereading/${reading.id}" class="button is-danger"><i class="fas fa-trash"></i></a>
+                </span>
             </td>
         </tr>
         #{/list}

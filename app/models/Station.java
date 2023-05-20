@@ -1,11 +1,15 @@
 package models;
 
 import play.db.jpa.Model;
+import util.StationUtil;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 @Entity
 public class Station extends Model
@@ -28,7 +32,16 @@ public class Station extends Model
         // give it a dummy reading for now
         if (!readings.isEmpty())
             return readings.get(readings.size()-1);
-        return new Reading(100, 10.0F, 100.00F, 200, 900);
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
+        LocalDateTime now = LocalDateTime.now();
+        return new Reading(null, 100, 10.0F, 100.00F, 200, 900);
+    }
+
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
     }
 
     public float getTempMax() {
@@ -96,5 +109,17 @@ public class Station extends Model
         }
 
         return minimum;
+    }
+
+    public String getTempTrend() {
+        return StationUtil.getTempTrend(this.readings);
+    }
+
+    public String getWindTrend() {
+        return StationUtil.getWindTrend(this.readings);
+    }
+
+    public String getPressureTrend() {
+        return StationUtil.getPressureTrend(this.readings);
     }
 }

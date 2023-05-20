@@ -1,0 +1,141 @@
+<div class="columns">
+  <div class="column is-one-fifth">
+    <div class="card has-background-black">
+        <span class="icon has-text-info is-large is-pulled-right">
+            <i class="fas fa-2x fa-solid fa-location-dot"></i>
+        </span>
+      <div class="card-content has-text-white">
+        <div class="content mt-3">
+          <h3 class="has-text-white">${_station.name}</h3>
+          <br>
+          Lat: ${_station.latitude}
+          <br>
+          Lng: ${_station.longitude}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-one-fifth">
+    <div class="card has-background-black">
+                <span class="icon has-text-info is-large is-pulled-right">
+                    #{if _station.getLatestReading().getStatus() == 'Clear'}
+                    <i class="fas fa-2x fa-solid fa-sun"></i>
+                    #{/if}
+                    #{if _station.getLatestReading().getStatus() == 'Partial Clouds'}
+                    <i class="fas fa-2x fa-solid fa-cloud-sun"></i>
+                    #{/if}
+                    #{if _station.getLatestReading().getStatus() == 'Cloudy'}
+                    <i class="fas fa-2x fa-solid fa-clouds"></i>
+                    #{/if}
+                    #{if _station.getLatestReading().getStatus() == 'Light Showers'}
+                    <i class="fas fa-2x fa-solid fa-cloud-sun-rain"></i>
+                    #{/if}
+                    #{if _station.getLatestReading().getStatus() == 'Heavy Showers'}
+                    <i class="fas fa-2x fa-solid fa-cloud-showers-heavy"></i>
+                    #{/if}
+                    #{if _station.getLatestReading().getStatus() == 'Rain'}
+                    <i class="fas fa-2x fa-solid fa-cloud-showers-water"></i>
+                    #{/if}
+                    #{if _station.getLatestReading().getStatus() == 'Snow'}
+                    <i class="fas fa-2x fa-solid fa-snowflake"></i>
+                    #{/if}
+                    #{if _station.getLatestReading().getStatus() == 'Thunder'}
+                    <i class="fas fa-2x fa-solid fa-bolt"></i>
+                    #{/if}
+                </span>
+      <div class="card-content has-text-white	">
+        <div class="content mt-3">
+          <h3 class="has-text-white">Weather</h3>
+          <br>
+          ${_station.getLatestReading().getStatus()}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-one-fifth">
+    <div class="card has-background-black">
+                <span class="icon has-text-danger is-large is-pulled-right">
+                    <i class="fas fa-2x fa-solid fa-temperature-half"></i>
+                </span>
+      <div class="card-content has-text-white	">
+        <div class="content mt-3">
+          <h3 class="has-text-white">Temp</h3>
+          <br>
+          ${_station.getLatestReading().getTemperature()} °C
+          <br>
+          ${_station.getLatestReading().getTemperatureFahrenheit()} °F
+          <span class="icon has-text-danger is-large is-pulled-right">
+                            #{if _station.getTempTrend() == 'Rising'}
+                            <i class="fas fa-lg fa-solid fa-arrow-up"></i>
+                            #{/if}
+                            #{if _station.getTempTrend() == 'Falling'}
+                            <i class="fas fa-lg fa-solid fa-arrow-down"></i>
+                            #{/if}
+                        </span>
+          <br>
+          Max: ${_station.getTempMax()}
+          <br>
+          Min: ${_station.getTempMin()}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-one-fifth">
+    <div class="card has-background-black">
+                <span class="icon has-text-warning is-large is-pulled-right">
+                    <i class="fas fa-2x fa-solid fa-tornado"></i>
+                </span>
+      <div class="card-content has-text-white	">
+        <div class="content mt-3">
+          <h3 class="has-text-white">Wind</h3>
+          <br>
+          ${_station.getLatestReading().getWindBeaufort()} bft
+          <br>
+          ${_station.getLatestReading().getWindCompassDirection()}
+          <span class="icon has-text-warning is-large is-pulled-right">
+                            #{if _station.getWindTrend() == 'Rising'}
+                            <i class="fas fa-lg fa-solid fa-arrow-up"></i>
+                            #{/if}
+                            #{if _station.getWindTrend() == 'Falling'}
+                            <i class="fas fa-lg fa-solid fa-arrow-down"></i>
+                            #{/if}
+                        </span>
+          <br>
+          Feels like
+          <br>
+          ${_station.getLatestReading().getWindChill()}
+          <br>
+          Max: ${_station.getWindMax()}
+          <br>
+          Min: ${_station.getWindMin()}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-one-fifth">
+    <div class="card has-background-black">
+        <span class="icon has-text-success is-large is-pulled-right">
+            <i class="fas fa-2x fa-solid fa-hurricane"></i>
+        </span>
+      <div class="card-content has-text-white	">
+        <div class="content mt-3">
+          <h3 class="has-text-white">Pressure</h3>
+          <br>
+          ${_station.getLatestReading().getPressure()} hpa
+          <br>
+          Max: ${_station.getPressureMax()}
+          <span class="icon has-text-success is-large is-pulled-right">
+              #{if _station.getPressureTrend() == 'Rising'}
+              <i class="fas fa-lg fa-solid fa-arrow-up"></i>
+              #{/if}
+              #{if _station.getPressureTrend() == 'Falling'}
+              <i class="fas fa-lg fa-solid fa-arrow-down"></i>
+              #{/if}
+          </span>
+          <br>
+          Min: ${_station.getPressureMin()}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
