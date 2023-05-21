@@ -13,7 +13,10 @@ public class Bootstrap extends Job
   public void doJob()
   {
     StationUtil.loadMap();
-    Fixtures.loadModels("data.yml");
+    if (Member.count() == 0)
+    {
+      Fixtures.loadModels("data.yml");
+    }
   }
 }
 
